@@ -73,4 +73,8 @@ class UserTest < ActiveSupport::TestCase
                         "#{@user.email} should be downcase"
   end
 
+  test 'authenticated? should return false for user with nil digest' do
+    assert_not @user.authenticated?('')
+  end
+
 end
