@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :microposts, dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
 
   before_save :downcase_email
@@ -11,6 +12,11 @@ class User < ActiveRecord::Base
             uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+
+
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
 
   # returns the hash digest of the given string
   # with environment-based complexity/cost
