@@ -86,31 +86,31 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'should follow and unfollow a user' do
-    michael = users(:michael)
+    augustine = users(:augustine)
     archer  = users(:archer)
-    assert_not michael.following?(archer)
-    michael.follow(archer)
-    assert michael.following?(archer)
-    assert archer.followers.include?(michael)
-    michael.unfollow(archer)
-    assert_not michael.following?(archer)
+    assert_not augustine.following?(archer)
+    augustine.follow(archer)
+    assert augustine.following?(archer)
+    assert archer.followers.include?(augustine)
+    augustine.unfollow(archer)
+    assert_not augustine.following?(archer)
   end
 
   test 'feed should have the right posts' do
-    michael = users(:michael)
+    augustine = users(:augustine)
     archer  = users(:archer)
     lana    = users(:lana)
-    # Michael's feed should also contain his own posts
-    michael.microposts.each do |post_self|
-      assert michael.feed.include?(post_self)
+    # Augustine's feed should also contain his own posts
+    augustine.microposts.each do |post_self|
+      assert augustine.feed.include?(post_self)
     end
-    # Michael follows lana, his feed has her posts
+    # Augustine follows lana, his feed has her posts
     lana.microposts.each do |post_following|
-      assert michael.feed.include?(post_following)
+      assert augustine.feed.include?(post_following)
     end
-     # Michael does not follow archer, his feed does not have archer's posts
+     # Augustine does not follow archer, his feed does not have archer's posts
      archer.microposts.each do |post_not_followed|
-       assert_not michael.feed.include?(post_not_followed)
+       assert_not augustine.feed.include?(post_not_followed)
      end
   end
 end
