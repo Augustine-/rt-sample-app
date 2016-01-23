@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
+  self.per_page = 15
+
   # Uses a subselect to delegate inclusion work to the database
   def feed
     following_ids = "SELECT followed_id FROM relationships

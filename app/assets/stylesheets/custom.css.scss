@@ -58,6 +58,20 @@ p {
   line-height: 1.7em;
 }
 
+/* navbar */
+
+.navbar-custom {
+    background-color:#7F2A2A;
+    color:#ffffff;
+    border-radius:0;
+    .navbar-nav > li > a {
+        color:#fff;
+        &:hover{
+          color: #7F2A2A;
+          background-color: #fff;
+        }
+    }
+}
 
 /* header */
 
