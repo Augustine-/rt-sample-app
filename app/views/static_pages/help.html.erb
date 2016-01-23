@@ -1,5 +1,15 @@
 <% provide(:title, "Help") %>
 <h1>Twiiter</h1>
+<h2>How to use Twiiter</h2>
+<ol>
+  <li>Navigate to the <%= link_to "home", root_path %> page.</li>
+  <li>Click "Sign up now!", and enter your information.
+    (Passwords are stored as encrypted hashes in the database. Your secrets are safe with us!)</li>
+  <li>Check your email for the activation link, follow it.</li>
+  <li>Ta-da! You're ready to start following some users, or making some twiits of your own.</li>
+  <li>You can change your password (with email confirmation) through the settings option in the top-right.</li>
+</ol>
+
 <p>
-  This is the help page.
+  <%= link_to "More questions?", contact_path %>
 </p>
